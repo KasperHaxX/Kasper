@@ -1,6 +1,8 @@
-[KILLNET-BOMBER-main.zip](https://github.com/KasperHaxX/Kasper/files/14731511/KILLNET-BOMBER-main.zip)
-[KILLNET-BOMBER-main.zip](https://github.com/KasperHaxX/Kasper/files/14731509/KILLNET-BOMBER-main.zip)
-[README.md](https://github.com/KasperHaxX/Kasper/files/14731507/README.md)
+![KILLNET_BOMBER_V5](https://github.com/KasperHaxX/Kasper/assets/164631190/78eae0c8-9308-43f8-a2f5-3c39b4243a4d)
+![KILLNET_BOMBER_CALL_V5](https://github.com/KasperHaxX/Kasper/assets/164631190/6c9aebce-9621-4a4f-9b48-22ae0e00448a)
+![KILLNET_BOMBER_SMS_V5](https://github.com/KasperHaxX/Kasper/assets/164631190/a4d5327e-c61a-4a9c-a916-b3d6d2c68337)
+![KILLNET_BOMBER_CUSTOM_V5](https://github.com/KasperHaxX/Kasper/assets/164631190/5b0a6445-da6d-4f0c-98b2-0208b760d87f)
+![KILLNET_BOMBER_CALL_V5](https://github.com/KasperHaxX/Kasper/assets/164631190/6ee2204a-ab00-40cd-874f-fc51d542e56f)
 <h2> KASPER BOMBER V5 </h2>
 <img src="KILLNET_BOMBER_V5.png">
 <img src="KILLNET_BOMBER_SMS_V5.png">
