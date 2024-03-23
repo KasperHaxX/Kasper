@@ -4,10 +4,6 @@
 ![KILLNET_BOMBER_CUSTOM_V5](https://github.com/KasperHaxX/Kasper/assets/164631190/5b0a6445-da6d-4f0c-98b2-0208b760d87f)
 ![KILLNET_BOMBER_CALL_V5](https://github.com/KasperHaxX/Kasper/assets/164631190/6ee2204a-ab00-40cd-874f-fc51d542e56f)
 <h2> KASPER BOMBER V5 </h2>
-<img src="KILLNET_BOMBER_V5.png">
-<img src="KILLNET_BOMBER_SMS_V5.png">
-<img src="KILLNET_BOMBER_CALL_V5.png">
-<img src="KILLNET_BOMBER_CUSTOM_V5.png">
 <br>
 
 * `💣 📱 💀`
