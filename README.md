@@ -91,7 +91,7 @@ git clone https://github.com/KasperHaxX/Kasper
 ```
 Go to KILLNET-BOMBER directory
 ```bash
-cd KILLNET-BOMBER
+cd Kasper
 ```
 Run the script
 ```bash
