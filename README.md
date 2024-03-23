@@ -96,12 +96,5 @@ Run the script
 ```bash
 python main.py
 ```
-<br>
-
-<h2> TELEGRAM CHANNEL </h2>
-
-* `All updates of KILLNET will be posted here !`
-
-* <a href="https://t.me/killnetbomber">JOIN CHANNEL </a>
 
  
