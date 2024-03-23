@@ -95,7 +95,7 @@ cd Kasper
 ```
 Run the script
 ```bash
-python main.py
+python Kasper.py
 ```
 
  
