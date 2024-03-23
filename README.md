@@ -87,7 +87,7 @@ pkg install git wget python3 -y
 ```
 Clone the repository
 ```bash
-git clone https://github.com/killnet108/KILLNET-BOMBER
+git clone https://github.com/KasperHaxX/Kasper 
 ```
 Go to KILLNET-BOMBER directory
 ```bash
