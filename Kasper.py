@@ -39,18 +39,9 @@ PASSWORD_HASH = hashlib.sha256(
     "rkoc3829".encode()
 ).hexdigest()
 
-ALLOWED_USERS = [
-    "kasper",
-    "rkoc3829"
-]
-
 BANNED_USERS = []
 
 # normalize lists
-ALLOWED_USERS = [
-    u.strip().lower()
-    for u in ALLOWED_USERS
-]
 
 BANNED_USERS = [
     u.strip().lower()
@@ -108,13 +99,6 @@ if login_user in BANNED_USERS:
 
     print("⛔ You Are Banned")
     exit()
-
-if login_user not in ALLOWED_USERS:
-
-    print("❌ Not Whitelisted")
-    exit()
-
-print("✅ Whitelist Passed")
 
 # =========================================================
 # USER + DEVICE INFO
