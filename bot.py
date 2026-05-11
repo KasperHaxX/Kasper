@@ -1,6 +1,5 @@
-import discord
-
-TOKEN = "MTUwMzQ0NTAwODUyNTY5MzAyOQ.G4cE5s.r4FwS6FASCEEDAeqQDaxIu4ITdwOErb1uRAXiM"
+import os
+TOKEN = os.getenv("DISCORD_TOKEN")
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -11,7 +10,7 @@ client = discord.Client(intents=intents)
 MAINTENANCE_MODE = False
 BANNED_USERS = []
 
-ADMIN_ID = 1234567890  # your Discord ID
+ADMIN_ID = 1503460348286468268  # your Discord ID
 
 def is_admin(message):
     return message.author.id == ADMIN_ID
