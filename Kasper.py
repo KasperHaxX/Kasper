@@ -11,6 +11,10 @@ def load_config():
 def is_allowed():
     config = load_config()
     return not config["maintenance"]
+
+if not is_allowed():
+    print("⚠️ Tool under maintenance. Try later.")
+    exit()
     
 import json
 import os
