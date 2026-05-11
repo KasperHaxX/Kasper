@@ -70,7 +70,7 @@ BANNED_USERS = [
 # USER + DEVICE INFO
 # =========================================================
 
-username = os.getlogin()
+username = os.environ.get("USER", "unknown")
 
 hostname = socket.gethostname()
 
