@@ -27,11 +27,11 @@ print("===================================")
 print("      KASPER SECURITY SYSTEM")
 print("===================================")
 
-user = input("Username: ")
+login_user = input("Username: ").strip().lower()
 passwd = input("Password: ")
 
 if (
-    user == USERNAME and
+    login_user == USERNAME.lower() and
     hashlib.sha256(passwd.encode()).hexdigest()
     == PASSWORD_HASH
 ):
@@ -143,11 +143,11 @@ if MAINTENANCE_MODE:
     print("⚠️ Script Under Maintenance")
     exit()
 
-if user in BANNED_USERS:
+if login_user in BANNED_USERS:
     print("⛔ You Are Banned")
     exit()
 
-if user not in ALLOWED_USERS:
+if login_user not in ALLOWED_USERS:
     print("❌ Not Whitelisted")
     exit()
 
