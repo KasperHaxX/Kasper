@@ -16,9 +16,10 @@ from datetime import datetime
 # LOGIN SYSTEM
 # =========================================================
 
+import hashlib
+
 USERNAME = "kasper"
 
-# Password: rkoc3829
 PASSWORD_HASH = hashlib.sha256(
     "rkoc3829".encode()
 ).hexdigest()
@@ -30,10 +31,10 @@ print("===================================")
 login_user = input("Username: ").strip().lower()
 passwd = input("Password: ")
 
+# LOGIN CHECK
 if (
-    login_user == USERNAME.lower() and
-    hashlib.sha256(passwd.encode()).hexdigest()
-    == PASSWORD_HASH
+    login_user == USERNAME.lower()
+    and hashlib.sha256(passwd.encode()).hexdigest() == PASSWORD_HASH
 ):
     print("✅ Login Successful")
 else:
@@ -41,107 +42,24 @@ else:
     exit()
 
 # =========================================================
-# CONFIG
+# WHITELIST SYSTEM
 # =========================================================
-
-WEBHOOK_URL = "https://discord.com/api/webhooks/1503319995520909372/BiQtO0PheuKuru9ypZm69xSBVVibqg8W6QaaYMVUukas-4zYYc2LwPmED2ZuyEc3deUw"
-
-CURRENT_VERSION = "1.0.0"
-
-MAINTENANCE_MODE = False
-
-DEBUG_MODE = False
-
-ANNOUNCEMENT = """
-🔥 Welcome To Kasper Ultimate System
-✅ Security Enabled
-🚀 System Online
-"""
 
 ALLOWED_USERS = [
     "kasper",
     "pc17112007"
 ]
 
-BANNED_USERS = [
-]
+BANNED_USERS = []
 
-# =========================================================
-# USER + DEVICE INFO
-# =========================================================
-
-username = os.environ.get("USER", "unknown")
-
-hostname = socket.gethostname()
-
-ip_address = socket.gethostbyname(hostname)
-
-system = platform.system()
-
-release = platform.release()
-
-version = platform.version()
-
-machine = platform.machine()
-
-processor = platform.processor()
-
-python_version = platform.python_version()
-
-mac_address = ':'.join([
-    '{:02x}'.format(
-        (uuid.getnode() >> elements) & 0xff
-    )
-    for elements in range(0, 2 * 6, 2)
-][::-1])
-
-time_now = datetime.now().strftime(
-    "%Y-%m-%d %H:%M:%S"
-)
-
-# =========================================================
-# LOCAL DATABASE
-# =========================================================
-
-DATABASE_FILE = "kasper_database.json"
-
-if not os.path.exists(DATABASE_FILE):
-
-    with open(DATABASE_FILE, "w") as f:
-
-        json.dump({
-            "total_runs": 0
-        }, f)
-
-with open(DATABASE_FILE, "r") as f:
-
-    database = json.load(f)
-
-database["total_runs"] += 1
-
-with open(DATABASE_FILE, "w") as f:
-
-    json.dump(database, f)
-
-# =========================================================
-# SECURITY CHECKS
-# =========================================================
-
-# Normalize typed username
-user = user.strip().lower()
-
-# Normalize lists
+# normalize
 ALLOWED_USERS = [u.strip().lower() for u in ALLOWED_USERS]
 BANNED_USERS = [u.strip().lower() for u in BANNED_USERS]
 
 print("========== DEBUG ==========")
-print("LOGIN USER:", repr(user))
+print("LOGIN USER:", repr(login_user))
 print("ALLOWED:", repr(ALLOWED_USERS))
 print("===========================")
-
-if MAINTENANCE_MODE:
-    print("⚠️ Script Under Maintenance")
-    exit()
 
 if login_user in BANNED_USERS:
     print("⛔ You Are Banned")
