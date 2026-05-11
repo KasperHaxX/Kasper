@@ -1,3 +1,35 @@
+import json
+import os
+from datetime import datetime
+
+DB_FILE = "kasper_database.json"
+
+
+def load_db():
+    if not os.path.exists(DB_FILE):
+        return {}
+    with open(DB_FILE, "r") as f:
+        return json.load(f)
+
+
+def save_db(data):
+    with open(DB_FILE, "w") as f:
+        json.dump(data, f, indent=4)
+
+
+def log_activity(user_id, action):
+    db = load_db()
+
+    if str(user_id) not in db:
+        db[str(user_id)] = []
+
+    db[str(user_id)].append({
+        "action": action,
+        "time": str(datetime.now())
+    })
+
+    save_db(db)
+    
 # =========================================================
 # KASPER SECURITY SYSTEM (CLEAN VERSION - NO WHITELIST)
 # =========================================================
