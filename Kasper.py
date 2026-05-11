@@ -127,53 +127,31 @@ with open(DATABASE_FILE, "w") as f:
 # SECURITY CHECKS
 # =========================================================
 
+# Normalize typed username
+user = user.strip().lower()
+
+# Normalize lists
+ALLOWED_USERS = [u.strip().lower() for u in ALLOWED_USERS]
+BANNED_USERS = [u.strip().lower() for u in BANNED_USERS]
+
+print("========== DEBUG ==========")
+print("LOGIN USER:", repr(user))
+print("ALLOWED:", repr(ALLOWED_USERS))
+print("===========================")
+
 if MAINTENANCE_MODE:
-
     print("⚠️ Script Under Maintenance")
-
     exit()
 
 if user in BANNED_USERS:
-
     print("⛔ You Are Banned")
-
-    requests.post(
-        WEBHOOK_URL,
-        json={
-            "content":
-            f"🚫 BANNED USER DETECTED\n"
-            f"👤 User: {username}\n"
-            f"🌐 IP: {ip_address}"
-        }
-    )
-
     exit()
 
-# =========================================================
-# WHITELIST CHECK
-# =========================================================
-
-user = str(user).strip().lower()
-
-ALLOWED_USERS = [
-    str(u).strip().lower()
-    for u in ALLOWED_USERS
-]
-
-print("========== DEBUG ==========")
-print("Typed User:", repr(user))
-print("Whitelist:", repr(ALLOWED_USERS))
-print("===========================")
-
-if user in ALLOWED_USERS:
-
-    print("✅ Whitelist Passed")
-
-else:
-
+if user not in ALLOWED_USERS:
     print("❌ Not Whitelisted")
-
     exit()
+
+print("✅ Whitelist Passed")
 
 # =========================================================
 # STARTUP MESSAGE
