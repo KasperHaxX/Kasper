@@ -1,4 +1,18 @@
 import json
+
+CONFIG_FILE = "kasper_config.json"
+
+
+def load_config():
+    with open(CONFIG_FILE, "r") as f:
+        return json.load(f)
+
+
+def is_allowed():
+    config = load_config()
+    return not config["maintenance"]
+    
+import json
 import os
 from datetime import datetime
 
