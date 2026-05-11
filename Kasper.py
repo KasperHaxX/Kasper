@@ -41,7 +41,7 @@ PASSWORD_HASH = hashlib.sha256(
 
 ALLOWED_USERS = [
     "kasper",
-    "pc17112007"
+    "rkoc3829"
 ]
 
 BANNED_USERS = []
