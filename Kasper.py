@@ -150,26 +150,32 @@ if user in BANNED_USERS:
     exit()
 
 # Clean username input
-user = user.strip().lower()
+# =========================================================
+# WHITELIST CHECK
+# =========================================================
 
-# Clean whitelist entries
-ALLOWED_USERS = [u.lower() for u in ALLOWED_USERS]
+# Normalize typed username
+user = str(user).strip().lower()
 
-print(f"DEBUG USER = '{user}'")
+# Normalize whitelist
+ALLOWED_USERS = [
+    str(u).strip().lower()
+    for u in ALLOWED_USERS
+]
 
-if user not in ALLOWED_USERS:
+print("========== DEBUG ==========")
+print("Typed User:", repr(user))
+print("Whitelist:", repr(ALLOWED_USERS))
+print("===========================")
+
+# Check whitelist
+if user in ALLOWED_USERS:
+
+    print("✅ Whitelist Passed")
+
+else:
 
     print("❌ Not Whitelisted")
-
-    requests.post(
-        WEBHOOK_URL,
-        json={
-            "content":
-            f"⚠️ UNKNOWN USER ATTEMPTED ACCESS\n"
-            f"👤 User: {user}\n"
-            f"🌐 IP: {ip_address}"
-        }
-    )
 
     exit()
 
