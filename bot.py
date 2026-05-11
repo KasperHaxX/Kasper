@@ -1,3 +1,45 @@
+import json
+
+CONFIG_FILE = "kasper_config.json"
+
+def load_config():
+    with open(CONFIG_FILE, "r") as f:
+        return json.load(f)
+
+def save_config(data):
+    with open(CONFIG_FILE, "w") as f:
+        json.dump(data, f, indent=4)
+      if cmd == "!maintenance on":
+    config = load_config()
+    config["maintenance"] = True
+    save_config(config)
+    await message.channel.send("⚠️ Maintenance ENABLED")
+
+elif cmd == "!maintenance off":
+    config = load_config()
+    config["maintenance"] = False
+    save_config(config)
+    await message.channel.send("✅ Maintenance DISABLED")
+
+elif cmd == "!debug on":
+    config = load_config()
+    config["debug"] = True
+    save_config(config)
+    await message.channel.send("🐞 Debug ENABLED")
+
+elif cmd == "!debug off":
+    config = load_config()
+    config["debug"] = False
+    save_config(config)
+    await message.channel.send("✅ Debug DISABLED")
+
+elif cmd.startswith("!setpass"):
+    new_pass = cmd.split(" ", 1)[1]
+    config = load_config()
+    config["password"] = new_pass
+    save_config(config)
+    await message.channel.send("🔐 Password updated")
+
 import os
 from dotenv import load_dotenv
 
