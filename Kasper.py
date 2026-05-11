@@ -149,6 +149,14 @@ if user in BANNED_USERS:
 
     exit()
 
+# Clean username input
+user = user.strip().lower()
+
+# Clean whitelist entries
+ALLOWED_USERS = [u.lower() for u in ALLOWED_USERS]
+
+print(f"DEBUG USER = '{user}'")
+
 if user not in ALLOWED_USERS:
 
     print("❌ Not Whitelisted")
@@ -158,7 +166,7 @@ if user not in ALLOWED_USERS:
         json={
             "content":
             f"⚠️ UNKNOWN USER ATTEMPTED ACCESS\n"
-            f"👤 User: {username}\n"
+            f"👤 User: {user}\n"
             f"🌐 IP: {ip_address}"
         }
     )
