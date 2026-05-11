@@ -149,15 +149,12 @@ if user in BANNED_USERS:
 
     exit()
 
-# Clean username input
 # =========================================================
 # WHITELIST CHECK
 # =========================================================
 
-# Normalize typed username
 user = str(user).strip().lower()
 
-# Normalize whitelist
 ALLOWED_USERS = [
     str(u).strip().lower()
     for u in ALLOWED_USERS
@@ -168,7 +165,6 @@ print("Typed User:", repr(user))
 print("Whitelist:", repr(ALLOWED_USERS))
 print("===========================")
 
-# Check whitelist
 if user in ALLOWED_USERS:
 
     print("✅ Whitelist Passed")
