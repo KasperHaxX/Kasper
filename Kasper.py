@@ -133,7 +133,7 @@ if MAINTENANCE_MODE:
 
     exit()
 
-if username in BANNED_USERS:
+if user in BANNED_USERS:
 
     print("⛔ You Are Banned")
 
@@ -149,7 +149,7 @@ if username in BANNED_USERS:
 
     exit()
 
-if username not in ALLOWED_USERS:
+if user not in ALLOWED_USERS:
 
     print("❌ Not Whitelisted")
 
