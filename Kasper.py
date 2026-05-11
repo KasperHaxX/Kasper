@@ -16,7 +16,7 @@ from datetime import datetime
 # LOGIN SYSTEM
 # =========================================================
 
-USERNAME = "kasper"
+USERNAME = "whitelist username"
 
 # Password: rkoc3829
 PASSWORD_HASH = hashlib.sha256(
