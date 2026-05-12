@@ -1,3 +1,10 @@
+@client.event
+async def on_message(message):
+    print(message.content)
+
+    if message.author == client.user:
+        return
+        
 import json
 
 CONFIG_FILE = "kasper_config.json"
@@ -56,7 +63,7 @@ client = discord.Client(intents=intents)
 MAINTENANCE_MODE = False
 BANNED_USERS = []
 
-ADMIN_ID = 1503460348286468268  # your Discord ID
+ADMIN_ID = 1503490257960698017  # your Discord ID
 
 def is_admin(message):
     return message.author.id == ADMIN_ID
