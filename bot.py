@@ -50,14 +50,53 @@ async def on_message(message):
 
     print("GOT MESSAGE:", message.content)
 
-    if message.content == "!maintenance on":
-        await message.channel.send("⚠️ Maintenance WORKING")
+    cmd = message.content.lower()
 
-    # admin only
+    # =========================
+    # ADMIN CHECK FIRST
+    # =========================
     if not is_admin(message):
         return
 
-    cmd = message.content.lower()
+    # =========================
+    # LOAD CONFIG
+    # =========================
+    config = load_config()
+
+    # =========================
+    # MAINTENANCE COMMANDS
+    # =========================
+    if cmd == "!maintenance on":
+        config["maintenance"] = True
+        save_config(config)
+        await message.channel.send("⚠️ Maintenance ENABLED")
+
+    elif cmd == "!maintenance off":
+        config["maintenance"] = False
+        save_config(config)
+        await message.channel.send("✅ Maintenance DISABLED")
+
+    # =========================
+    # DEBUG
+    # =========================
+    elif cmd == "!debug on":
+        config["debug"] = True
+        save_config(config)
+        await message.channel.send("🐞 Debug ENABLED")
+
+    elif cmd == "!debug off":
+        config["debug"] = False
+        save_config(config)
+        await message.channel.send("✅ Debug DISABLED")
+
+    # =========================
+    # PASSWORD
+    # =========================
+    elif cmd.startswith("!setpass"):
+        new_pass = cmd.split(" ", 1)[1]
+        config["password"] = new_pass
+        save_config(config)
+        await message.channel.send("🔐 Password updated")
 
     # =========================
     # MAINTENANCE
