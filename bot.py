@@ -39,7 +39,7 @@ def save_config(data):
 # =========================
 # ADMIN
 # =========================
-ADMIN_ID = 1503490257960698017
+ADMIN_ID = 935821817636093982
 
 def is_admin(message):
     return message.author.id == ADMIN_ID
