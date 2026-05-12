@@ -24,8 +24,15 @@ client = discord.Client(intents=intents)
 CONFIG_FILE = "kasper_config.json"
 
 def load_config():
-    with open(CONFIG_FILE, "r") as f:
-        return json.load(f)
+    try:
+        with open(CONFIG_FILE, "r") as f:
+            return json.load(f)
+    except:
+        return {
+            "maintenance": False,
+            "debug": False,
+            "password": "1234"
+        }
 
 def save_config(data):
     with open(CONFIG_FILE, "w") as f:
@@ -43,6 +50,13 @@ def is_admin(message):
 # BOT READY
 # =========================
 @client.event
+async def on_ready():
+    print(f"Bot online as {client.user}")
+
+# =========================
+# MESSAGE HANDLER
+# =========================
+@client.event
 async def on_message(message):
 
     if message.author == client.user:
@@ -53,95 +67,51 @@ async def on_message(message):
     cmd = message.content.lower()
 
     # =========================
-    # ADMIN CHECK FIRST
+    # ADMIN CHECK
     # =========================
     if not is_admin(message):
         return
 
-    # =========================
-    # LOAD CONFIG
-    # =========================
     config = load_config()
-
-    # =========================
-    # MAINTENANCE COMMANDS
-    # =========================
-    if cmd == "!maintenance on":
-        config["maintenance"] = True
-        save_config(config)
-        await message.channel.send("⚠️ Maintenance ENABLED")
-
-    elif cmd == "!maintenance off":
-        config["maintenance"] = False
-        save_config(config)
-        await message.channel.send("✅ Maintenance DISABLED")
-
-    # =========================
-    # DEBUG
-    # =========================
-    elif cmd == "!debug on":
-        config["debug"] = True
-        save_config(config)
-        await message.channel.send("🐞 Debug ENABLED")
-
-    elif cmd == "!debug off":
-        config["debug"] = False
-        save_config(config)
-        await message.channel.send("✅ Debug DISABLED")
-
-    # =========================
-    # PASSWORD
-    # =========================
-    elif cmd.startswith("!setpass"):
-        new_pass = cmd.split(" ", 1)[1]
-        config["password"] = new_pass
-        save_config(config)
-        await message.channel.send("🔐 Password updated")
 
     # =========================
     # MAINTENANCE
     # =========================
     if cmd == "!maintenance on":
-        config = load_config()
         config["maintenance"] = True
         save_config(config)
-
         await message.channel.send("⚠️ Maintenance ENABLED")
 
     elif cmd == "!maintenance off":
-        config = load_config()
         config["maintenance"] = False
         save_config(config)
-
         await message.channel.send("✅ Maintenance DISABLED")
 
     # =========================
     # DEBUG
     # =========================
     elif cmd == "!debug on":
-        config = load_config()
         config["debug"] = True
         save_config(config)
-
         await message.channel.send("🐞 Debug ENABLED")
 
     elif cmd == "!debug off":
-        config = load_config()
         config["debug"] = False
         save_config(config)
-
         await message.channel.send("✅ Debug DISABLED")
 
     # =========================
     # PASSWORD
     # =========================
     elif cmd.startswith("!setpass"):
-        new_pass = cmd.split(" ", 1)[1]
+        parts = cmd.split(" ", 1)
 
-        config = load_config()
-        config["password"] = new_pass
+        if len(parts) < 2:
+            await message.channel.send("❌ No password provided")
+            return
+
+        config["password"] = parts[1]
         save_config(config)
-
         await message.channel.send("🔐 Password updated")
 
 # =========================
