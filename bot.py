@@ -43,19 +43,15 @@ def is_admin(message):
 # BOT READY
 # =========================
 @client.event
-async def on_ready():
-    print(f"Bot online as {client.user}")
-
-# =========================
-# MESSAGE HANDLER
-# =========================
-@client.event
 async def on_message(message):
 
     if message.author == client.user:
         return
 
-    print("MESSAGE:", message.content)
+    print("GOT MESSAGE:", message.content)
+
+    if message.content == "!maintenance on":
+        await message.channel.send("⚠️ Maintenance WORKING")
 
     # admin only
     if not is_admin(message):
