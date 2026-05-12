@@ -9,6 +9,9 @@ from dotenv import load_dotenv
 load_dotenv()
 TOKEN = os.getenv("DISCORD_TOKEN")
 
+if not TOKEN:
+    print("❌ ERROR: DISCORD_TOKEN not found in .env file")
+    exit()
 # =========================
 # INTENTS
 # =========================
